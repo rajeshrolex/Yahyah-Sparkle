@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
-import { FaSprayCan } from 'react-icons/fa';
+import { FaSprayCan, FaWhatsapp } from 'react-icons/fa';
 import logo from '../assets/logo.png';
 
 const Navbar = () => {
@@ -70,15 +70,17 @@ const Navbar = () => {
                                 )}
                             </Link>
                         ))}
-                        <Link
-                            to="/contact"
-                            className={`px-6 py-2.5 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 ${scrolled
+                        <a
+                            href="https://wa.me/917671842007?text=Hi,%20I%20am%20interested%20in%20the%20Bumper%20Dhamaka%20Offer%20(8%20Litres%20Combo%20-%20Rs.1700).%20Please%20confirm%20my%20booking."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`px-6 py-2.5 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 flex items-center gap-2 ${scrolled
                                 ? 'bg-gradient-to-r from-primary-600 to-secondary-600 text-white shadow-lg hover:shadow-xl'
                                 : 'bg-white text-primary-700 hover:bg-white/90'
                                 }`}
                         >
-                            Get Quote
-                        </Link>
+                            <FaWhatsapp className="text-xl" /> Book Now
+                        </a>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -115,13 +117,15 @@ const Navbar = () => {
                                 {link.name}
                             </Link>
                         ))}
-                        <Link
-                            to="/contact"
+                        <a
+                            href="https://wa.me/917671842007?text=Hi,%20I%20am%20interested%20in%20the%20Bumper%20Dhamaka%20Offer%20(8%20Litres%20Combo%20-%20Rs.1700).%20Please%20confirm%20my%20booking."
+                            target="_blank"
+                            rel="noopener noreferrer"
                             onClick={() => setIsOpen(false)}
-                            className="block mt-3 py-3 px-4 rounded-xl font-semibold text-center text-white bg-gradient-to-r from-primary-600 to-secondary-600"
+                            className="block mt-3 py-3 px-4 rounded-xl font-semibold text-center text-white bg-gradient-to-r from-primary-600 to-secondary-600 flex items-center justify-center gap-2"
                         >
-                            Get Quote
-                        </Link>
+                            <FaWhatsapp className="text-xl" /> Book Now
+                        </a>
                     </div>
                 </div>
             </div>

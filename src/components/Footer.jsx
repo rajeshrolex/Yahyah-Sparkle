@@ -49,7 +49,7 @@ const Footer = () => {
                             <a href="#" className="p-3 rounded-xl bg-white/10 hover:bg-blue-600 text-white transition-all duration-300 hover:scale-110">
                                 <FaFacebook size={20} />
                             </a>
-                            <a href="#" className="p-3 rounded-xl bg-white/10 hover:bg-pink-500 text-white transition-all duration-300 hover:scale-110">
+                            <a href="https://www.instagram.com/yahyahsparkle?utm_source=qr&igsh=MXN3OGIwNHE2MG5lZg==" target="_blank" rel="noopener noreferrer" className="p-3 rounded-xl bg-white/10 hover:bg-pink-500 text-white transition-all duration-300 hover:scale-110">
                                 <FaInstagram size={20} />
                             </a>
                         </div>
