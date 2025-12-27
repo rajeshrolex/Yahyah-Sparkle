@@ -12,6 +12,7 @@ import redCleaner from '../assets/red-cleaner.jpg';
 import blueCleaner from '../assets/blue-cleaner.jpg';
 import comboPack from '../assets/combo-pack.png';
 import productBottles from '../assets/product-bottles.jpg';
+import brandAmbassador from '../assets/brand-ambassador.png';
 
 // Import product data and components
 import { products } from '../data/products';
@@ -149,7 +150,7 @@ const Home = () => {
                             </div>
                         </motion.div>
 
-                        {/* Right Side - Product Image */}
+                        {/* Right Side - Brand Ambassador Image */}
                         <motion.div
                             initial={{ opacity: 0, x: 30 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -159,10 +160,9 @@ const Home = () => {
                             <div className="relative group">
                                 <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 via-primary-500/20 to-blue-600/20 rounded-3xl blur-3xl animate-pulse-slow"></div>
                                 <img
-                                    src={bumperOffer}
-                                    alt="Bumper Dhamaka Offer Combo"
-                                    className="relative w-full h-auto max-h-[600px] object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
-                                    onError={(e) => { e.target.src = productBottles; }}
+                                    src={brandAmbassador}
+                                    alt="YahYah Sparkle Brand Ambassador"
+                                    className="relative w-full h-auto max-h-[600px] object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500 rounded-2xl"
                                 />
                                 {/* Decorative Floating Elements */}
                                 <div className="absolute -top-10 -right-10 text-6xl animate-bounce delay-100 hidden md:block">🎄</div>
