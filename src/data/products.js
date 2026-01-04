@@ -4,8 +4,56 @@ import comboPack from '../assets/combo-pack.png';
 import bannerRed from '../assets/banner-red.png';
 import bannerBlue from '../assets/banner-blue.png';
 import bumperOffer from '../assets/bumper-offer.jpg';
+import specialDhamakaOffer from '../assets/special-dhamaka-offer.jpg';
 
 export const products = [
+    {
+        id: 'special-dhamaka-offer',
+        name: '🎉 Special Dhamaka Offer - 15 Litres Mega Pack!',
+        subtitle: 'Limited Stock - Only 30 Combos Available!',
+        description: 'MEGA SAVINGS! Get 7 Red Liquids + 7 Blue Liquids + 1 Phenyl Compound (Total 15 Litres) at an unbeatable price. FREE Delivery within 25km of Hyderabad, and FREE RTC Cargo delivery to all of Telangana & Andhra Pradesh!',
+        price: '₹3500',
+        unit: '15 Litres',
+        image: specialDhamakaOffer,
+        color: 'from-yellow-500 to-orange-600',
+        bgColor: 'from-yellow-50 to-orange-50',
+        isBestValue: true,
+        isSpecialOffer: true,
+        offerPeriod: '04/01/2026 - 16/01/2026',
+        stockLimit: '30 Combos Only!',
+        features: [
+            '7 Bottles of YahYah Sparkle Red (7 Litres)',
+            '7 Bottles of YahYah Sparkle Blue (7 Litres)',
+            '1 Phenyl Compound (1 Litre)',
+            'Total 15 Litres of cleaning power',
+            'Best value ever offered!'
+        ],
+        deliveryInfo: [
+            '🚚 FREE Delivery within 25km of Hyderabad',
+            '🚌 FREE RTC Cargo delivery to Telangana',
+            '🚌 FREE RTC Cargo delivery to Andhra Pradesh',
+            '📦 Safe & Secure Packaging'
+        ],
+        useCases: [
+            'Bulk Home Cleaning',
+            'Commercial Cleaning',
+            'Office & Workspace Cleaning',
+            'Hostel & PG Cleaning',
+            'Professional Cleaning Services'
+        ],
+        instructions: [
+            'Use Red liquid for hard stains and marble',
+            'Use Blue liquid for tiles and general bathroom cleaning',
+            'Use Phenyl for floor mopping and disinfection',
+            'Wear gloves during usage'
+        ],
+        precautions: [
+            'Wear gloves during use',
+            'Keep out of reach of children',
+            'Store in a cool, dry place',
+            'Avoid mixing different cleaning liquids'
+        ]
+    },
     {
         id: 'bumper-offer',
         name: 'Merry Christmas & Happy New Year Bumper Dhamaka Offer!',

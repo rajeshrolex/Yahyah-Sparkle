@@ -102,6 +102,36 @@ const ProductDetailsModal = ({ isOpen, onClose, product }) => {
                                         </div>
                                     )}
 
+                                    {/* Stock Limit Badge */}
+                                    {product.stockLimit && (
+                                        <div className="p-3 bg-orange-100 rounded-2xl border-2 border-orange-300 text-center">
+                                            <span className="text-lg font-bold text-orange-700">⚡ {product.stockLimit}</span>
+                                        </div>
+                                    )}
+
+                                    {/* Delivery Info Section (for Special Offer) */}
+                                    {product.deliveryInfo && (
+                                        <div className="p-4 bg-blue-50 rounded-2xl border border-blue-100">
+                                            <h4 className="flex items-center gap-2 text-lg font-bold text-blue-700 mb-3">
+                                                🚚 FREE Delivery Details
+                                            </h4>
+                                            <ul className="space-y-2 text-blue-700 text-sm font-medium">
+                                                {product.deliveryInfo.map((info, index) => (
+                                                    <li key={index} className="flex items-center gap-2">
+                                                        {info}
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    )}
+
+                                    {/* Offer Period Badge */}
+                                    {product.offerPeriod && (
+                                        <div className="p-3 bg-purple-100 rounded-2xl border border-purple-200 text-center">
+                                            <span className="text-sm font-bold text-purple-700">🗓️ Offer Valid: {product.offerPeriod}</span>
+                                        </div>
+                                    )}
+
                                     {/* Use Cases */}
                                     <div>
                                         <h4 className="flex items-center gap-2 text-lg font-bold text-gray-900 mb-3">
