@@ -163,7 +163,7 @@ export const products = [
         subtitle: 'Complete Cleaning Kit',
         description: 'Get the complete cleaning power with our combo pack including both Red and Blue cleaners plus professional accessories.',
         price: '₹1500',
-        unit: '6 Litres',
+        unit: '8 Litres',
         image: comboPack,
         color: 'from-purple-500 to-pink-500',
         bgColor: 'from-purple-50 to-pink-50',

@@ -108,7 +108,7 @@ const Home = () => {
                             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 mb-8 max-w-lg mx-auto lg:mx-0">
                                 <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-4">
                                     <div className="text-left">
-                                        <p className="text-white/80 text-lg mb-1">6 Litres Combo Pack</p>
+                                        <p className="text-white/80 text-lg mb-1">8 Litres Combo Pack</p>
                                         <div className="flex flex-col gap-1">
                                             <span className="flex items-center gap-2 text-white font-bold"><span className="w-3 h-3 rounded-full bg-red-500"></span> 4 Red Liquid Bottles</span>
                                             <span className="flex items-center gap-2 text-white font-bold"><span className="w-3 h-3 rounded-full bg-blue-500"></span> 4 Blue Liquid Bottles</span>
