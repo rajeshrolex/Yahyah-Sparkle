@@ -7,8 +7,6 @@ import { FaBath, FaHome } from 'react-icons/fa';
 
 // Import product images
 import productBottles from '../assets/product-bottles.jpg';
-import cleaningProducts from '../assets/cleaning-products.jpg';
-import redCleaner from '../assets/red-cleaner.jpg';
 import blueCleaner from '../assets/blue-cleaner.jpg';
 
 // Import product data and components

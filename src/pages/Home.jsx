@@ -5,14 +5,8 @@ import { FaSprayCan, FaHome, FaBath, FaCheckCircle, FaArrowRight, FaPhone, FaSta
 import { MdCleaningServices, MdKitchen } from 'react-icons/md';
 
 // Import product images
-import festiveOffer from '../assets/festive-offer-2026.png';
-import festiveReal from '../assets/festive-combo-real.png';
-import bumperOffer from '../assets/bumper-offer.jpg';
-import redCleaner from '../assets/red-cleaner.jpg';
-import blueCleaner from '../assets/blue-cleaner.jpg';
-import comboPack from '../assets/combo-pack.png';
-import productBottles from '../assets/product-bottles.jpg';
-import brandAmbassador from '../assets/brand-ambassador.png';
+import mahashivratriOffer from '../assets/mahashivratri-offer.jpg';
+import ramzanHoliOffer from '../assets/ramzan-holi-offer.jpg';
 
 // Import product data and components
 import { products } from '../data/products';
@@ -92,21 +86,21 @@ const Home = () => {
                                 transition={{ repeat: Infinity, duration: 2 }}
                                 className="mb-6 inline-block"
                             >
-                                <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-yellow-100 to-yellow-400 drop-shadow-lg font-serif">
-                                    Merry Christmas
+                                <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-200 to-purple-500 drop-shadow-lg font-serif">
+                                    Ramzan & Holi
                                 </h2>
                                 <h3 className="text-xl md:text-3xl font-bold text-white mt-2">
-                                    & Happy New Year <span className="text-yellow-400">2026</span>
+                                    Super Dhamaka Sale <span className="text-pink-400">2026</span>
                                 </h3>
                             </motion.div>
 
                             {/* Main Offer Title */}
                             <div className="mb-8">
                                 <h1 className="text-4xl md:text-6xl font-black text-white mb-2 uppercase tracking-wide drop-shadow-2xl">
-                                    Bumber Dhamaka <span className="text-accent-400">Offer</span>
+                                    Special <span className="text-orange-400">Combo</span>
                                 </h1>
                                 <p className="text-xl text-white/90 font-medium bg-white/10 inline-block px-4 py-1 rounded-lg backdrop-blur-sm border border-white/20">
-                                    Cleaning Products Combo
+                                    8 Litres Mega Cleaning Pack
                                 </p>
                             </div>
 
@@ -114,22 +108,22 @@ const Home = () => {
                             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 mb-8 max-w-lg mx-auto lg:mx-0">
                                 <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-4">
                                     <div className="text-left">
-                                        <p className="text-white/80 text-lg mb-1">8 Litres Combo Pack</p>
+                                        <p className="text-white/80 text-lg mb-1">6 Litres Combo Pack</p>
                                         <div className="flex flex-col gap-1">
                                             <span className="flex items-center gap-2 text-white font-bold"><span className="w-3 h-3 rounded-full bg-red-500"></span> 4 Red Liquid Bottles</span>
                                             <span className="flex items-center gap-2 text-white font-bold"><span className="w-3 h-3 rounded-full bg-blue-500"></span> 4 Blue Liquid Bottles</span>
                                         </div>
                                     </div>
                                     <div className="text-right">
-                                        <div className="bg-yellow-500 text-black font-black px-6 py-4 rounded-xl rotate-3 shadow-lg transform hover:rotate-6 transition-transform">
-                                            <p className="text-xs uppercase font-bold">Only</p>
-                                            <p className="text-4xl">₹1700</p>
+                                        <div className="bg-pink-500 text-white font-black px-6 py-4 rounded-xl rotate-3 shadow-lg transform hover:rotate-6 transition-transform">
+                                            <p className="text-xs uppercase font-bold text-pink-100">Only</p>
+                                            <p className="text-4xl">₹1500</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="border-t border-white/20 pt-4 text-center md:text-left">
-                                    <p className="text-yellow-300 font-medium">
-                                        Offer Valid: <span className="text-white">23/12/2025 - 16/01/2026</span>
+                                    <p className="text-pink-300 font-medium">
+                                        Offer Valid: <span className="text-white">16/02/2026 - 31/03/2026</span>
                                     </p>
                                 </div>
                             </div>
@@ -140,17 +134,17 @@ const Home = () => {
                                     <FaPhone className="mr-3" /> Call: 7671842007
                                 </a>
                                 <a
-                                    href="https://wa.me/917671842007?text=Hi,%20I%20am%20interested%20in%20the%20Bumper%20Dhamaka%20Offer%20(8%20Litres%20Combo%20-%20Rs.1700).%20Please%20confirm%20my%20booking."
+                                    href="https://wa.me/917671842007?text=Hi,%20I%20am%20interested%20in%20the%20Ramzan%20Holi%20Super%20Dhamaka%20Sale%20(8%20Litres%20Combo%20-%20Rs.1500).%20Please%20confirm%20my%20booking."
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="px-8 py-4 rounded-full bg-green-500/20 border border-green-500 text-green-400 font-bold hover:bg-green-500 hover:text-white transition-all backdrop-blur-sm flex items-center gap-2"
+                                    className="px-8 py-4 rounded-full bg-pink-500/20 border border-pink-500 text-pink-400 font-bold hover:bg-pink-500 hover:text-white transition-all backdrop-blur-sm flex items-center gap-2"
                                 >
                                     <FaWhatsapp className="text-2xl" /> Book Now
                                 </a>
                             </div>
                         </motion.div>
 
-                        {/* Right Side - Brand Ambassador Image */}
+                        {/* Right Side - Festive Banner Image */}
                         <motion.div
                             initial={{ opacity: 0, x: 30 }}
                             animate={{ opacity: 1, x: 0 }}
@@ -158,15 +152,15 @@ const Home = () => {
                             className="relative mt-8 lg:mt-0"
                         >
                             <div className="relative group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-red-600/20 via-primary-500/20 to-blue-600/20 rounded-3xl blur-3xl animate-pulse-slow"></div>
+                                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-pink-500/20 to-blue-600/20 rounded-3xl blur-3xl animate-pulse-slow"></div>
                                 <img
-                                    src={brandAmbassador}
-                                    alt="YahYah Sparkle Brand Ambassador"
+                                    src={ramzanHoliOffer}
+                                    alt="Ramzan & Holi Super Dhamaka Sale"
                                     className="relative w-full h-auto max-h-[600px] object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500 rounded-2xl"
                                 />
                                 {/* Decorative Floating Elements */}
-                                <div className="absolute -top-10 -right-10 text-6xl animate-bounce delay-100 hidden md:block">🎄</div>
-                                <div className="absolute bottom-10 -left-10 text-6xl animate-bounce delay-300 hidden md:block">🎁</div>
+                                <div className="absolute -top-10 -right-10 text-6xl animate-bounce delay-100 hidden md:block">🌙</div>
+                                <div className="absolute bottom-10 -left-10 text-6xl animate-bounce delay-300 hidden md:block">🎨</div>
                             </div>
                         </motion.div>
                     </div>

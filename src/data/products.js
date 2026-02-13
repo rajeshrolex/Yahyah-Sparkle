@@ -3,97 +3,87 @@ import blueCleaner from '../assets/blue-cleaner.jpg';
 import comboPack from '../assets/combo-pack.png';
 import bannerRed from '../assets/banner-red.png';
 import bannerBlue from '../assets/banner-blue.png';
-import bumperOffer from '../assets/bumper-offer.jpg';
-import specialDhamakaOffer from '../assets/special-dhamaka-offer.jpg';
+
+import mahashivratriOffer from '../assets/mahashivratri-offer.jpg';
+import ramzanHoliOffer from '../assets/ramzan-holi-offer.jpg';
+
 
 export const products = [
     {
-        id: 'special-dhamaka-offer',
-        name: '🎉 Special Dhamaka Offer - 15 Litres Mega Pack!',
-        subtitle: 'Limited Stock - Only 30 Combos Available!',
-        description: 'MEGA SAVINGS! Get 7 Red Liquids + 7 Blue Liquids + 1 Phenyl Compound (Total 15 Litres) at an unbeatable price. FREE Delivery within 25km of Hyderabad, and FREE RTC Cargo delivery to all of Telangana & Andhra Pradesh!',
-        price: '₹3500',
-        unit: '15 Litres',
-        image: specialDhamakaOffer,
-        color: 'from-yellow-500 to-orange-600',
-        bgColor: 'from-yellow-50 to-orange-50',
+        id: 'ramzan-holi-offer',
+        name: '🌙 Ramzan & Holi 🎨 Super Dhamaka Sale!',
+        subtitle: '8 Litres Special Combo - Limited Time!',
+        description: 'Celebrate the festivals of colors and blessings with our Super Dhamaka Sale! Get 4 Red Liquids + 4 Blue Liquids (Total 8 Litres) at a special festive price.',
+        price: '₹1500',
+        unit: '8 Litres',
+        image: ramzanHoliOffer,
+        color: 'from-purple-600 to-pink-500',
+        bgColor: 'from-purple-50 to-pink-50',
         isBestValue: true,
         isSpecialOffer: true,
-        offerPeriod: '04/01/2026 - 16/01/2026',
-        stockLimit: '30 Combos Only!',
+        offerPeriod: '16/02/2026 - 31/03/2026',
         features: [
-            '7 Bottles of YahYah Sparkle Red (7 Litres)',
-            '7 Bottles of YahYah Sparkle Blue (7 Litres)',
-            '1 Phenyl Compound (1 Litre)',
-            'Total 15 Litres of cleaning power',
-            'Best value ever offered!'
-        ],
-        deliveryInfo: [
-            '🚚 FREE Delivery within 25km of Hyderabad',
-            '🚌 FREE RTC Cargo delivery to Telangana',
-            '🚌 FREE RTC Cargo delivery to Andhra Pradesh',
-            '📦 Safe & Secure Packaging'
+            '4 Bottles of YahYah Sparkle Red (4 Litres)',
+            '4 Bottles of YahYah Sparkle Blue (4 Litres)',
+            'Total 8 Litres of cleaning power',
+            'Perfect for festive deep cleaning',
+            'Super Dhamaka Savings'
         ],
         useCases: [
-            'Bulk Home Cleaning',
-            'Commercial Cleaning',
-            'Office & Workspace Cleaning',
-            'Hostel & PG Cleaning',
-            'Professional Cleaning Services'
+            'Full House Cleaning',
+            'Pre-Festival Deep Clean',
+            'Stain Removal',
+            'Floor & Bathroom Cleaning'
         ],
         instructions: [
             'Use Red liquid for hard stains and marble',
             'Use Blue liquid for tiles and general bathroom cleaning',
-            'Use Phenyl for floor mopping and disinfection',
-            'Wear gloves during usage'
+            'Follow individual bottle instructions'
         ],
         precautions: [
             'Wear gloves during use',
             'Keep out of reach of children',
-            'Store in a cool, dry place',
-            'Avoid mixing different cleaning liquids'
+            'Store in a cool, dry place'
         ]
     },
     {
-        id: 'bumper-offer',
-        name: 'Merry Christmas & Happy New Year Bumper Dhamaka Offer!',
-        subtitle: '8 Litres Mega Savings - Limited Time Only!',
-        description: 'Bumper Dhamaka Offer: Get 4 Red Liquids + 4 Blue Liquids (Total 8 Litres). Valid from 23/12/2025 to 16/01/2026. Includes free cleaning accessories for the ultimate cleaning experience.',
-        price: '₹1700',
-        unit: '8 Litres',
-        image: bumperOffer,
-        color: 'from-green-600 to-red-600',
-        bgColor: 'from-green-50 to-red-50',
+        id: 'mahashivratri-offer',
+        name: '🕉️ Mahashivratri Dhamaka Offer!',
+        subtitle: 'Special 6 Litres Combo - Limited Time!',
+        description: 'Celebrate Mahashivratri with our special cleaning combo! Get 3 Red Liquids + 3 Blue Liquids (Total 6 Litres) at a special price of just ₹1300.',
+        price: '₹1300',
+        unit: '6 Litres',
+        image: mahashivratriOffer,
+        color: 'from-orange-600 to-red-600',
+        bgColor: 'from-orange-50 to-red-50',
         isBestValue: true,
-        isBumperOffer: true,
-        offerPeriod: '23/12/2025 - 16/01/2026',
+        isSpecialOffer: true,
+        offerPeriod: '10/02/2026 - 16/02/2026',
         features: [
-            '4 Bottles of YahYah Sparkle Red',
-            '4 Bottles of YahYah Sparkle Blue',
-            'Total 8 Litres of cleaning power',
-            'Best value for holiday cleaning'
-        ],
-        freebies: [
-            '1 Pair Industrial Hand Gloves',
-            '1 Green Scrubber',
-            '1 Steel Scrubber'
+            '3 Bottles of YahYah Sparkle Red (3 Litres)',
+            '3 Bottles of YahYah Sparkle Blue (3 Litres)',
+            'Total 6 Litres of cleaning power',
+            'Perfect for festive deep cleaning',
+            'Advanced stain removal formula'
         ],
         useCases: [
             'Full House Cleaning',
-            'Bulk Storage',
-            'Professional Cleaning Tasks'
+            'Bathroom & Tiles Deep Cleaning',
+            'Festive Preparation',
+            'Stain Removal for Marble & Tiles'
         ],
         instructions: [
             'Use Red liquid for hard stains and marble',
             'Use Blue liquid for tiles and general bathroom cleaning',
-            'Wear provided gloves during usage'
+            'Follow individual bottle instructions for best results'
         ],
         precautions: [
-            'Wear gloves (provided)',
+            'Wear gloves during use',
             'Keep out of reach of children',
-            'Avoid mixing red and blue liquids'
+            'Store in a cool, dry place'
         ]
     },
+
     {
         id: 'red-cleaner',
         name: 'YahYah Sparkle Red',
