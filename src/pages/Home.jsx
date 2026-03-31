@@ -5,8 +5,8 @@ import { FaSprayCan, FaHome, FaBath, FaCheckCircle, FaArrowRight, FaPhone, FaSta
 import { MdCleaningServices, MdKitchen } from 'react-icons/md';
 
 // Import product images
-import mahashivratriOffer from '../assets/mahashivratri-offer.jpg';
-import ramzanHoliOffer from '../assets/ramzan-holi-offer.jpg';
+import redBottleImg from '../assets/red-cleaner.jpg';
+import blueBottleImg from '../assets/blue-cleaner.jpg';
 
 // Import product data and components
 import { products } from '../data/products';
@@ -62,119 +62,193 @@ const Home = () => {
     return (
         <div className="overflow-hidden">
             {/* Hero Section */}
-            <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
                 {/* Animated Gradient Background */}
-                <div className="absolute inset-0 gradient-bg-animated" />
+                <div className="absolute inset-0 gradient-bg-animated opacity-60" />
 
                 {/* Decorative Elements */}
                 <div className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse-slow" />
                 <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl animate-pulse-slow" />
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary-500/10 rounded-full blur-3xl" />
 
-                <div className="relative container-custom py-20">
-                    <div className="grid lg:grid-cols-2 gap-12 items-center">
-                        {/* Left Side - Festive Text Content */}
+                <div className="relative container-custom py-24 z-10">
+                    <div className="text-center mb-12">
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            animate={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
-                            className="text-center lg:text-left"
                         >
-                            {/* Festive Header */}
-                            <motion.div
-                                animate={{ scale: [1, 1.05, 1] }}
-                                transition={{ repeat: Infinity, duration: 2 }}
-                                className="mb-6 inline-block"
-                            >
-                                <h2 className="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-200 to-purple-500 drop-shadow-lg font-serif">
-                                    Ramzan & Holi
-                                </h2>
-                                <h3 className="text-xl md:text-3xl font-bold text-white mt-2">
-                                    Super Dhamaka Sale <span className="text-pink-400">2026</span>
-                                </h3>
-                            </motion.div>
-
-                            {/* Main Offer Title */}
-                            <div className="mb-8">
-                                <h1 className="text-4xl md:text-6xl font-black text-white mb-2 uppercase tracking-wide drop-shadow-2xl">
-                                    Special <span className="text-orange-400">Combo</span>
-                                </h1>
-                                <p className="text-xl text-white/90 font-medium bg-white/10 inline-block px-4 py-1 rounded-lg backdrop-blur-sm border border-white/20">
-                                    8 Litres Mega Cleaning Pack
-                                </p>
-                            </div>
-
-                            {/* Offer Details */}
-                            <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 mb-8 max-w-lg mx-auto lg:mx-0">
-                                <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-4">
-                                    <div className="text-left">
-                                        <p className="text-white/80 text-lg mb-1">8 Litres Combo Pack</p>
-                                        <div className="flex flex-col gap-1">
-                                            <span className="flex items-center gap-2 text-white font-bold"><span className="w-3 h-3 rounded-full bg-red-500"></span> 4 Red Liquid Bottles</span>
-                                            <span className="flex items-center gap-2 text-white font-bold"><span className="w-3 h-3 rounded-full bg-blue-500"></span> 4 Blue Liquid Bottles</span>
-                                        </div>
-                                    </div>
-                                    <div className="text-right">
-                                        <div className="bg-pink-500 text-white font-black px-6 py-4 rounded-xl rotate-3 shadow-lg transform hover:rotate-6 transition-transform">
-                                            <p className="text-xs uppercase font-bold text-pink-100">Only</p>
-                                            <p className="text-4xl">₹1500</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="border-t border-white/20 pt-4 text-center md:text-left">
-                                    <p className="text-pink-300 font-medium">
-                                        Offer Valid: <span className="text-white">16/02/2026 - 31/03/2026</span>
-                                    </p>
-                                </div>
-                            </div>
-
-                            {/* Call Action */}
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
-                                <a href="tel:+917671842007" className="btn-primary px-10 py-4 text-xl shadow-lg shadow-primary-600/30 animate-pulse">
-                                    <FaPhone className="mr-3" /> Call: 7671842007
-                                </a>
-                                <a
-                                    href="https://wa.me/917671842007?text=Hi,%20I%20am%20interested%20in%20the%20Ramzan%20Holi%20Super%20Dhamaka%20Sale%20(8%20Litres%20Combo%20-%20Rs.1500).%20Please%20confirm%20my%20booking."
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="px-8 py-4 rounded-full bg-pink-500/20 border border-pink-500 text-pink-400 font-bold hover:bg-pink-500 hover:text-white transition-all backdrop-blur-sm flex items-center gap-2"
-                                >
-                                    <FaWhatsapp className="text-2xl" /> Book Now
-                                </a>
-                            </div>
-                        </motion.div>
-
-                        {/* Right Side - Festive Banner Image */}
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="relative mt-8 lg:mt-0"
-                        >
-                            <div className="relative group">
-                                <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-pink-500/20 to-blue-600/20 rounded-3xl blur-3xl animate-pulse-slow"></div>
-                                <img
-                                    src={ramzanHoliOffer}
-                                    alt="Ramzan & Holi Super Dhamaka Sale"
-                                    className="relative w-full h-auto max-h-[600px] object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500 rounded-2xl"
-                                />
-                                {/* Decorative Floating Elements */}
-                                <div className="absolute -top-10 -right-10 text-6xl animate-bounce delay-100 hidden md:block">🌙</div>
-                                <div className="absolute bottom-10 -left-10 text-6xl animate-bounce delay-300 hidden md:block">🎨</div>
+                            <h1 className="text-4xl md:text-6xl font-black text-white mb-4 uppercase tracking-wide drop-shadow-2xl">
+                                Super Special <span className="text-yellow-400">Combo Offer</span>
+                            </h1>
+                            <div className="flex flex-wrap items-center justify-center gap-4 text-base md:text-lg text-white font-medium bg-white/10 inline-flex px-6 py-2 rounded-full backdrop-blur-sm border border-white/20 shadow-lg">
+                                <span className="flex items-center gap-2">📅 Started date: <span className="font-bold">01/04/2026</span></span>
+                                <span className="hidden md:inline">|</span>
+                                <span className="flex items-center gap-2">📅 End date: <span className="font-bold">10/04/2026</span></span>
                             </div>
                         </motion.div>
                     </div>
 
-                    {/* Scroll Indicator */}
-                    <motion.div
-                        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-                        animate={{ y: [0, 10, 0] }}
-                        transition={{ repeat: Infinity, duration: 2 }}
+                    <div className="grid lg:grid-cols-2 gap-8 items-stretch max-w-6xl mx-auto">
+                        {/* Offer 1 - 4 Litres */}
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="bg-black/40 backdrop-blur-xl rounded-3xl p-8 border border-white/20 relative flex flex-col hover:border-yellow-400/50 transition-all duration-300 shadow-2xl group"
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            
+                            <div className="text-center mb-6 relative z-10">
+                                <h2 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600 drop-shadow-lg mb-2 filter drop-shadow-[0_0_10px_rgba(250,204,21,0.3)]">
+                                    Rs.1200
+                                </h2>
+                                <h3 className="text-2xl text-white font-bold tracking-wide">ki 4 litres</h3>
+                            </div>
+
+                            <div className="flex-grow flex flex-col justify-between relative z-10">
+                                <div className="space-y-4 mb-8">
+                                    <div className="flex items-start gap-4 bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors items-center">
+                                        <img src={redBottleImg} alt="Red Liquid" className="w-12 h-16 object-contain drop-shadow-lg rounded-md mix-blend-screen" />
+                                        <div>
+                                            <p className="text-white font-bold text-lg leading-tight">2 Red yah yah Sparkle</p>
+                                            <p className="text-gray-300 text-sm mt-1">(for Deep Clean)</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-4 bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors items-center">
+                                        <img src={blueBottleImg} alt="Blue Liquid" className="w-12 h-16 object-contain drop-shadow-lg rounded-md mix-blend-screen" />
+                                        <div>
+                                            <p className="text-white font-bold text-lg leading-tight">2 Blue yah yah Sparkle</p>
+                                            <p className="text-gray-300 text-sm mt-1">(for Stubborn Stains)</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="flex justify-between items-center px-4 pt-4 border-t border-white/10 mt-6">
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-2 h-6 bg-red-500 rounded-sm"></div>
+                                            <span className="text-red-100 font-medium">Red liquid: <span className="text-yellow-400 font-bold">Rs.350/litre</span></span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-2 h-6 bg-blue-500 rounded-sm"></div>
+                                            <span className="text-blue-100 font-medium">Blue liquid: <span className="text-yellow-400 font-bold">Rs.250/litre</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Free Gifts Box */}
+                                <div className="mt-auto relative">
+                                    <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-b from-green-400 to-green-600 text-white px-8 py-1.5 rounded-full font-black text-xl shadow-[0_0_20px_rgba(34,197,94,0.4)] border-2 border-green-300 flex items-center gap-2 z-20">
+                                        <span>★</span> FREE <span>★</span>
+                                    </div>
+                                    <div className="border border-green-500/50 bg-gradient-to-b from-green-900/40 to-green-900/10 rounded-2xl pt-8 pb-5 px-4 text-center shadow-inner relative overflow-hidden">
+                                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-500 to-transparent opacity-50"></div>
+                                        <p className="text-emerald-50 font-medium flex flex-wrap justify-center gap-x-3 gap-y-2 text-sm">
+                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Hand gloves</span>
+                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Steel scrubber</span>
+                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Handle blade</span>
+                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Green scrubber</span>
+                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Sand paper</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+
+                        {/* Offer 2 - 8 Litres */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                            className="bg-black/40 backdrop-blur-xl rounded-3xl p-8 border border-white/20 relative flex flex-col hover:border-yellow-400/50 transition-all duration-300 shadow-2xl group"
+                        >
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            
+                            <div className="text-center mb-6 relative z-10">
+                                <h2 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600 drop-shadow-lg mb-2 filter drop-shadow-[0_0_10px_rgba(250,204,21,0.3)]">
+                                    Rs.1900
+                                </h2>
+                                <h3 className="text-2xl text-white font-bold tracking-wide">ki 8 litres</h3>
+                            </div>
+
+                            <div className="flex-grow flex flex-col justify-between relative z-10">
+                                <div className="space-y-4 mb-8">
+                                    <div className="flex items-start gap-4 bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors items-center">
+                                        <img src={redBottleImg} alt="Red Liquid" className="w-12 h-16 object-contain drop-shadow-lg rounded-md mix-blend-screen" />
+                                        <div>
+                                            <p className="text-white font-bold text-lg leading-tight">4 Red yah yah Sparkle</p>
+                                            <p className="text-gray-300 text-sm mt-1">(for Deep Clean)</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex items-start gap-4 bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors items-center">
+                                        <img src={blueBottleImg} alt="Blue Liquid" className="w-12 h-16 object-contain drop-shadow-lg rounded-md mix-blend-screen" />
+                                        <div>
+                                            <p className="text-white font-bold text-lg leading-tight">4 Blue yah yah Sparkle</p>
+                                            <p className="text-gray-300 text-sm mt-1">(for Stubborn Stains)</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex justify-between items-center px-4 pt-4 border-t border-white/10 mt-6">
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-2 h-6 bg-red-500 rounded-sm"></div>
+                                            <span className="text-red-100 font-medium">Red liquid: <span className="text-yellow-400 font-bold">Rs.350/litre</span></span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-2 h-6 bg-blue-500 rounded-sm"></div>
+                                            <span className="text-blue-100 font-medium">Blue liquid: <span className="text-yellow-400 font-bold">Rs.250/litre</span></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Free Gifts Box */}
+                                <div className="mt-auto relative">
+                                    <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-b from-green-400 to-green-600 text-white px-8 py-1.5 rounded-full font-black text-xl shadow-[0_0_20px_rgba(34,197,94,0.4)] border-2 border-green-300 flex items-center gap-2 z-20">
+                                        <span>★★</span> FREE <span>★★</span>
+                                    </div>
+                                    <div className="border border-green-500/50 bg-gradient-to-b from-green-900/40 to-green-900/10 rounded-2xl pt-8 pb-5 px-4 text-center shadow-inner relative overflow-hidden">
+                                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-500 to-transparent opacity-50"></div>
+                                        <p className="text-emerald-50 font-medium flex flex-wrap justify-center gap-x-3 gap-y-2 text-sm">
+                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Hand gloves</span>
+                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Steel scrubber</span>
+                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Handle blade</span>
+                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Green scrubber</span>
+                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Sand paper</span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Call Action */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.6 }}
+                        className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center"
                     >
-                        <div className="w-6 h-10 rounded-full border-2 border-white/50 flex items-start justify-center p-2">
-                            <div className="w-1.5 h-3 bg-white/70 rounded-full" />
-                        </div>
+                        <a href="tel:+917671842007" className="btn-primary px-10 py-4 text-xl shadow-[0_0_20px_rgba(255,105,180,0.4)] animate-pulse rounded-full font-bold">
+                            <FaPhone className="mr-3 inline-block" /> Call: 7671842007
+                        </a>
+                        <a
+                            href="https://wa.me/917671842007?text=Hi,%20I%20am%20interested%20in%20the%20Super%20Special%20Combo%20Offers.%20Please%20confirm%20my%20booking."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-10 py-4 rounded-full bg-white/10 border-2 border-white text-white font-bold hover:bg-white hover:text-black transition-all shadow-lg flex items-center gap-2 text-xl"
+                        >
+                            <FaWhatsapp className="text-2xl text-green-400" /> WhatsApp Now
+                        </a>
                     </motion.div>
+
+                    {/* Scroll Indicator */}
+                    <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
+                        <motion.div
+                            animate={{ y: [0, 10, 0] }}
+                            transition={{ repeat: Infinity, duration: 2 }}
+                            className="w-6 h-10 rounded-full border-2 border-white/50 flex items-start justify-center p-2"
+                        >
+                            <div className="w-1.5 h-3 bg-white/70 rounded-full" />
+                        </motion.div>
+                    </div>
                 </div>
             </section>
 

@@ -1,88 +1,83 @@
 import redCleaner from '../assets/red-cleaner.jpg';
 import blueCleaner from '../assets/blue-cleaner.jpg';
 import comboPack from '../assets/combo-pack.png';
+import bulkOffer from '../assets/bulk-offer.jpg';
 import bannerRed from '../assets/banner-red.png';
 import bannerBlue from '../assets/banner-blue.png';
 
-import mahashivratriOffer from '../assets/mahashivratri-offer.jpg';
-import ramzanHoliOffer from '../assets/ramzan-holi-offer.jpg';
 
 
 export const products = [
     {
-        id: 'ramzan-holi-offer',
-        name: '🌙 Ramzan & Holi 🎨 Super Dhamaka Sale!',
-        subtitle: '8 Litres Special Combo - Limited Time!',
-        description: 'Celebrate the festivals of colors and blessings with our Super Dhamaka Sale! Get 4 Red Liquids + 4 Blue Liquids (Total 8 Litres) at a special festive price.',
-        price: '₹1500',
-        unit: '8 Litres',
-        image: ramzanHoliOffer,
-        color: 'from-purple-600 to-pink-500',
-        bgColor: 'from-purple-50 to-pink-50',
-        isBestValue: true,
+        id: 'super-special-combo-4l',
+        name: 'Super Special Combo Offer (4 Litres)',
+        subtitle: '2 Red + 2 Blue Liquids with Free Gifts',
+        description: 'Get our Super Special Combo containing 2 Litres of Red and 2 Litres of Blue YahYah Sparkle liquids along with 5 free cleaning accessories.',
+        price: '₹1200',
+        unit: '4 Litres',
+        image: comboPack,
+        color: 'from-yellow-500 to-orange-500',
+        bgColor: 'from-amber-50 to-orange-50',
         isSpecialOffer: true,
-        offerPeriod: '16/02/2026 - 31/03/2026',
+        offerPeriod: '01/04/2026 - 10/04/2026',
         features: [
-            '4 Bottles of YahYah Sparkle Red (4 Litres)',
-            '4 Bottles of YahYah Sparkle Blue (4 Litres)',
-            'Total 8 Litres of cleaning power',
-            'Perfect for festive deep cleaning',
-            'Super Dhamaka Savings'
+            '2 Red yah yah Sparkle (for Deep Clean)',
+            '2 Blue yah yah Sparkle (for Stubborn Stains)',
+            'Free: Hand gloves, Steel scrubber, Handle blade, Green scrubber, Sand paper',
+            'Red liquid: Rs.350/litre, Blue liquid: Rs.250/litre'
         ],
         useCases: [
-            'Full House Cleaning',
-            'Pre-Festival Deep Clean',
-            'Stain Removal',
-            'Floor & Bathroom Cleaning'
+            'Complete Home Cleaning',
+            'Bathroom & Toilet Deep Cleaning',
+            'Floor & Tiles Cleaning'
         ],
         instructions: [
             'Use Red liquid for hard stains and marble',
             'Use Blue liquid for tiles and general bathroom cleaning',
-            'Follow individual bottle instructions'
+            'Use the provided scrubbers and accessories for best results'
         ],
         precautions: [
-            'Wear gloves during use',
+            'Wear the provided gloves during use',
             'Keep out of reach of children',
             'Store in a cool, dry place'
         ]
     },
     {
-        id: 'mahashivratri-offer',
-        name: '🕉️ Mahashivratri Dhamaka Offer!',
-        subtitle: 'Special 6 Litres Combo - Limited Time!',
-        description: 'Celebrate Mahashivratri with our special cleaning combo! Get 3 Red Liquids + 3 Blue Liquids (Total 6 Litres) at a special price of just ₹1300.',
-        price: '₹1300',
-        unit: '6 Litres',
-        image: mahashivratriOffer,
-        color: 'from-orange-600 to-red-600',
+        id: 'super-special-combo-8l',
+        name: 'Super Special Combo Offer (8 Litres)',
+        subtitle: '4 Red + 4 Blue Liquids with Free Gifts',
+        description: 'Get our Mega Super Special Combo containing 4 Litres of Red and 4 Litres of Blue YahYah Sparkle liquids along with 5 free cleaning accessories.',
+        price: '₹1900',
+        unit: '8 Litres',
+        image: bulkOffer,
+        color: 'from-orange-500 to-red-600',
         bgColor: 'from-orange-50 to-red-50',
         isBestValue: true,
-        isSpecialOffer: true,
-        offerPeriod: '10/02/2026 - 16/02/2026',
+        isBumperOffer: true,
+        offerPeriod: '01/04/2026 - 10/04/2026',
         features: [
-            '3 Bottles of YahYah Sparkle Red (3 Litres)',
-            '3 Bottles of YahYah Sparkle Blue (3 Litres)',
-            'Total 6 Litres of cleaning power',
-            'Perfect for festive deep cleaning',
-            'Advanced stain removal formula'
+            '4 Red yah yah Sparkle (for Deep Clean)',
+            '4 Blue yah yah Sparkle (for Stubborn Stains)',
+            'Free: Hand gloves, Steel scrubber, Handle blade, Green scrubber, Sand paper',
+            'Red liquid: Rs.350/litre, Blue liquid: Rs.250/litre'
         ],
         useCases: [
-            'Full House Cleaning',
-            'Bathroom & Tiles Deep Cleaning',
-            'Festive Preparation',
-            'Stain Removal for Marble & Tiles'
+            'Complete Home Cleaning',
+            'Bathroom & Toilet Deep Cleaning',
+            'Floor & Tiles Cleaning'
         ],
         instructions: [
             'Use Red liquid for hard stains and marble',
             'Use Blue liquid for tiles and general bathroom cleaning',
-            'Follow individual bottle instructions for best results'
+            'Use the provided scrubbers and accessories for best results'
         ],
         precautions: [
-            'Wear gloves during use',
+            'Wear the provided gloves during use',
             'Keep out of reach of children',
             'Store in a cool, dry place'
         ]
     },
+
 
     {
         id: 'red-cleaner',
