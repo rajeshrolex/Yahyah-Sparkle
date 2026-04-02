@@ -151,38 +151,5 @@ export const products = [
             'Wear a mask if needed',
             'Keep out of reach of children'
         ]
-    },
-    {
-        id: 'combo-pack',
-        name: 'Combo Pack - Best Value!',
-        subtitle: 'Complete Cleaning Kit',
-        description: 'Get the complete cleaning power with our combo pack including both Red and Blue cleaners plus professional accessories.',
-        price: '₹1500',
-        unit: '8 Litres',
-        image: comboPack,
-        color: 'from-purple-500 to-pink-500',
-        bgColor: 'from-purple-50 to-pink-50',
-        isBestValue: true,
-        features: [
-            'Complete home cleaning solution',
-            'Includes both Red & Blue cleaners',
-            'Professional grade accessories included',
-            'Maximum savings'
-        ],
-        useCases: [
-            'Whole House Deep Cleaning',
-            'Kitchen & Bathroom Specialization',
-            'Stain Removal Experts'
-        ],
-        instructions: [
-            'Follow individual product instructions',
-            'Use provided scrubbers for best results',
-            'Store in a cool, dry place'
-        ],
-        precautions: [
-            'Wear gloves',
-            'Keep out of reach of children',
-            'Read labels carefully'
-        ]
     }
 ];
