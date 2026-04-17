@@ -7,6 +7,8 @@ import { MdCleaningServices, MdKitchen } from 'react-icons/md';
 // Import product images
 import redBottleImg from '../assets/red-cleaner.jpg';
 import blueBottleImg from '../assets/blue-cleaner.jpg';
+import akshaya8L from '../new/eight .png';
+import akshaya4L from '../new/four copy.png';
 
 // Import product data and components
 import { products } from '../data/products';
@@ -79,12 +81,12 @@ const Home = () => {
                             transition={{ duration: 0.8 }}
                         >
                             <h1 className="text-4xl md:text-6xl font-black text-white mb-4 uppercase tracking-wide drop-shadow-2xl">
-                                Super Special <span className="text-yellow-400">Combo Offer</span>
+                                Akshaya Tritiya <span className="text-yellow-400">Dhamaka Offer</span>
                             </h1>
                             <div className="flex flex-wrap items-center justify-center gap-4 text-base md:text-lg text-white font-medium bg-white/10 inline-flex px-6 py-2 rounded-full backdrop-blur-sm border border-white/20 shadow-lg">
-                                <span className="flex items-center gap-2">📅 Started date: <span className="font-bold">01/04/2026</span></span>
+                                <span className="flex items-center gap-2">📅 Started date: <span className="font-bold">18/04/2026</span></span>
                                 <span className="hidden md:inline">|</span>
-                                <span className="flex items-center gap-2">📅 End date: <span className="font-bold">10/04/2026</span></span>
+                                <span className="flex items-center gap-2">📅 End date: <span className="font-bold">30/04/2026</span></span>
                             </div>
                         </motion.div>
                     </div>
@@ -101,9 +103,13 @@ const Home = () => {
                             
                             <div className="text-center mb-6 relative z-10">
                                 <h2 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600 drop-shadow-lg mb-2 filter drop-shadow-[0_0_10px_rgba(250,204,21,0.3)]">
-                                    Rs.1200
+                                    Rs.1100
                                 </h2>
                                 <h3 className="text-2xl text-white font-bold tracking-wide">ki 4 litres</h3>
+                            </div>
+
+                            <div className="relative z-10 mb-6 group-hover:scale-105 transition-transform duration-500">
+                                <img src={akshaya4L} alt="4 Litre Offer" className="w-full h-48 object-contain drop-shadow-[0_0_15px_rgba(250,204,21,0.3)]" />
                             </div>
 
                             <div className="flex-grow flex flex-col justify-between relative z-10">
@@ -135,22 +141,6 @@ const Home = () => {
                                     </div>
                                 </div>
 
-                                {/* Free Gifts Box */}
-                                <div className="mt-auto relative">
-                                    <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-b from-green-400 to-green-600 text-white px-8 py-1.5 rounded-full font-black text-xl shadow-[0_0_20px_rgba(34,197,94,0.4)] border-2 border-green-300 flex items-center gap-2 z-20">
-                                        <span>★</span> FREE <span>★</span>
-                                    </div>
-                                    <div className="border border-green-500/50 bg-gradient-to-b from-green-900/40 to-green-900/10 rounded-2xl pt-8 pb-5 px-4 text-center shadow-inner relative overflow-hidden">
-                                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-500 to-transparent opacity-50"></div>
-                                        <p className="text-emerald-50 font-medium flex flex-wrap justify-center gap-x-3 gap-y-2 text-sm">
-                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Hand gloves</span>
-                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Steel scrubber</span>
-                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Handle blade</span>
-                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Green scrubber</span>
-                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Sand paper</span>
-                                        </p>
-                                    </div>
-                                </div>
                             </div>
                         </motion.div>
 
@@ -165,9 +155,13 @@ const Home = () => {
                             
                             <div className="text-center mb-6 relative z-10">
                                 <h2 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600 drop-shadow-lg mb-2 filter drop-shadow-[0_0_10px_rgba(250,204,21,0.3)]">
-                                    Rs.1900
+                                    Rs.1700
                                 </h2>
                                 <h3 className="text-2xl text-white font-bold tracking-wide">ki 8 litres</h3>
+                            </div>
+
+                            <div className="relative z-10 mb-6 group-hover:scale-105 transition-transform duration-500">
+                                <img src={akshaya8L} alt="8 Litre Offer" className="w-full h-48 object-contain drop-shadow-[0_0_15px_rgba(250,204,21,0.4)]" />
                             </div>
 
                             <div className="flex-grow flex flex-col justify-between relative z-10">
@@ -199,22 +193,6 @@ const Home = () => {
                                     </div>
                                 </div>
 
-                                {/* Free Gifts Box */}
-                                <div className="mt-auto relative">
-                                    <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-gradient-to-b from-green-400 to-green-600 text-white px-8 py-1.5 rounded-full font-black text-xl shadow-[0_0_20px_rgba(34,197,94,0.4)] border-2 border-green-300 flex items-center gap-2 z-20">
-                                        <span>★★</span> FREE <span>★★</span>
-                                    </div>
-                                    <div className="border border-green-500/50 bg-gradient-to-b from-green-900/40 to-green-900/10 rounded-2xl pt-8 pb-5 px-4 text-center shadow-inner relative overflow-hidden">
-                                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-green-500 to-transparent opacity-50"></div>
-                                        <p className="text-emerald-50 font-medium flex flex-wrap justify-center gap-x-3 gap-y-2 text-sm">
-                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Hand gloves</span>
-                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Steel scrubber</span>
-                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Handle blade</span>
-                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Green scrubber</span>
-                                            <span className="bg-green-500/20 px-3 py-1 rounded-full border border-green-500/30">Sand paper</span>
-                                        </p>
-                                    </div>
-                                </div>
                             </div>
                         </motion.div>
                     </div>
@@ -230,7 +208,7 @@ const Home = () => {
                             <FaPhone className="mr-3 inline-block" /> Call: 7671842007
                         </a>
                         <a
-                            href="https://wa.me/917671842007?text=Hi,%20I%20am%20interested%20in%20the%20Super%20Special%20Combo%20Offers.%20Please%20confirm%20my%20booking."
+                            href="https://wa.me/917671842007?text=Hi,%20I%20am%20interested%20in%20the%20Akshaya%20Tritiya%20Dhamaka%20Offer.%20Please%20confirm%20my%20booking."
                             target="_blank"
                             rel="noopener noreferrer"
                             className="px-10 py-4 rounded-full bg-white/10 border-2 border-white text-white font-bold hover:bg-white hover:text-black transition-all shadow-lg flex items-center gap-2 text-xl"
