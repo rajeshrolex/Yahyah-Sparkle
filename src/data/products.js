@@ -4,62 +4,28 @@ import comboPack from '../assets/combo-pack.png';
 import bulkOffer from '../assets/bulk-offer.jpg';
 import bannerRed from '../assets/banner-red.png';
 import bannerBlue from '../assets/banner-blue.png';
-import productPhoto from '../new/WhatsApp Image 2026-05-01 at 8.52.19 PM.jpeg';
-import telanganaBanner from '../new/WhatsApp Image 2026-05-01 at 8.49.42 PM.jpeg';
+import eightLitresImg from '../new/eight .png';
 
 
 export const products = [
     {
-        id: 'telangana-formation-6l',
-        name: 'Telangana Formation Day Super Dhamaka Offer (6 Litres)',
-        subtitle: '3 Red + 3 Blue Liquids',
-        description: 'Celebrate Telangana Formation Day with our special Super Dhamaka Offer! Contains 3 Litres of Red and 3 Litres of Blue YahYah Sparkle liquids.',
-        price: '₹1500',
-        unit: '6 Litres',
-        image: productPhoto,
-        banner: telanganaBanner,
+        id: 'super-dhamaka-8l',
+        name: 'Super Sale Dhamaka Offer (8 Litres)',
+        subtitle: '4 Red + 4 Blue Liquids',
+        description: 'Ashadam and Bonalu Festival Offer! Contains 4 Litres of Red and 4 Litres of Blue YahYah Sparkle liquids.',
+        price: '₹1400',
+        unit: '8 Litres',
+        image: eightLitresImg,
+        banner: eightLitresImg,
         color: 'from-yellow-500 to-orange-500',
         bgColor: 'from-amber-50 to-orange-50',
         isSpecialOffer: true,
-        offerPeriod: '02/05/2026 - 03/06/2026',
-        features: [
-            '3 Red yah yah Sparkle (for Deep Clean)',
-            '3 Blue yah yah Sparkle (for Stubborn Stains)',
-            'Red liquid: Rs.350/litre, Blue liquid: Rs.250/litre'
-        ],
-        useCases: [
-            'Complete Home Cleaning',
-            'Bathroom & Toilet Deep Cleaning',
-            'Floor & Tiles Cleaning'
-        ],
-        instructions: [
-            'Use Red liquid for hard stains and marble',
-            'Use Blue liquid for tiles and general bathroom cleaning',
-        ],
-        precautions: [
-            'Wear gloves during use',
-            'Keep out of reach of children',
-            'Store in a cool, dry place'
-        ]
-    },
-    {
-        id: 'telangana-formation-11l',
-        name: 'Telangana Formation Day Super Dhamaka Offer (11 Litres)',
-        subtitle: '6 Red + 5 Blue Liquids',
-        description: 'Mega Telangana Formation Day Super Dhamaka Offer! Contains 6 Litres of Red and 5 Litres of Blue YahYah Sparkle liquids.',
-        price: '₹2400',
-        unit: '11 Litres',
-        image: telanganaBanner,
-        banner: telanganaBanner,
-        color: 'from-orange-500 to-red-600',
-        bgColor: 'from-orange-50 to-red-50',
-        isBestValue: true,
         isBumperOffer: true,
-        offerPeriod: '02/05/2026 - 03/06/2026',
+        offerPeriod: '09/06/2026 - 09/08/2026',
         features: [
-            '6 Red yah yah Sparkle (for Deep Clean)',
-            '5 Blue yah yah Sparkle (for Stubborn Stains)',
-            'Red liquid: Rs.350/litre, Blue liquid: Rs.250/litre'
+            '4 Red yah yah Sparkle (for Deep Clean)',
+            '4 Blue yah yah Sparkle (for Stubborn Stains)',
+            'Red liquid: Rs.350, Blue liquid: Rs.250'
         ],
         useCases: [
             'Complete Home Cleaning',
