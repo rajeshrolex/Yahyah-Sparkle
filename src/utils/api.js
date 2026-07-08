@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || '/backend/api';
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const API_BASE_URL = import.meta.env.VITE_API_URL || (isLocal ? '/backend/api' : 'https://orange-yak-837262.hostingersite.com/backend/api');
 
 const api = axios.create({
     baseURL: API_BASE_URL,
