@@ -1,21 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaSprayCan, FaHome, FaBath, FaCheckCircle, FaArrowRight, FaPhone, FaStar, FaShoppingCart, FaWhatsapp } from 'react-icons/fa';
+import { 
+    FaSprayCan, 
+    FaHome, 
+    FaBath, 
+    FaCheckCircle, 
+    FaArrowRight, 
+    FaPhone, 
+    FaStar, 
+    FaShoppingCart, 
+    FaWhatsapp,
+    FaSearch,
+    FaRegFolderOpen
+} from 'react-icons/fa';
 import { MdCleaningServices, MdKitchen } from 'react-icons/md';
-
-// Import product images
-import redBottleImg from '../assets/red-cleaner.jpg';
-import blueBottleImg from '../assets/blue-cleaner.jpg';
-import telanganaBanner from '../new/WhatsApp Image 2026-05-01 at 8.49.42 PM.jpeg';
-import productPhoto from '../new/WhatsApp Image 2026-05-01 at 8.52.19 PM.jpeg';
-import eightLitresImg from '../new/eight .png';
-
-// Import product data and components
-import { products } from '../data/products';
+import api, { API_BASE_URL } from '../utils/api';
 import ProductDetailsModal from '../components/ProductDetailsModal';
 
 const Home = () => {
+    // Services
     const services = [
         {
             icon: <FaBath className="text-4xl" />,
@@ -37,18 +41,6 @@ const Home = () => {
         },
     ];
 
-    const [selectedProduct, setSelectedProduct] = React.useState(null);
-    const [isModalOpen, setIsModalOpen] = React.useState(false);
-
-    const openModal = (product) => {
-        setSelectedProduct(product);
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-    };
-
     const whyChooseUs = [
         'Professional & Trained Staff',
         'Eco-Friendly Cleaning Products',
@@ -59,157 +51,185 @@ const Home = () => {
     ];
 
     const whatsappNumber = '917671842007';
-    const whatsappMessage = encodeURIComponent('Hi! I am interested in YahYah Sparkle cleaning products. Please share more details.');
-    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+    // Dynamic states
+    const [heroData, setHeroData] = useState(null);
+    const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [loadingProducts, setLoadingProducts] = useState(true);
+    
+    // Filters & Pagination
+    const [search, setSearch] = useState('');
+    const [categoryFilter, setCategoryFilter] = useState('');
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+
+    // Modal
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // Fetch Hero Section Promo Settings
+    useEffect(() => {
+        const fetchHero = async () => {
+            try {
+                const response = await api.get('/public/hero.php');
+                setHeroData(response.data);
+            } catch (error) {
+                console.error("Failed to load hero banner:", error);
+            }
+        };
+        fetchHero();
+    }, []);
+
+    // Fetch Categories
+    useEffect(() => {
+        const fetchCats = async () => {
+            try {
+                const response = await api.get('/public/categories.php');
+                setCategories(response.data);
+            } catch (error) {
+                console.error("Failed to load categories:", error);
+            }
+        };
+        fetchCats();
+    }, []);
+
+    // Fetch Products with filters
+    const fetchProducts = async () => {
+        setLoadingProducts(true);
+        try {
+            const response = await api.get('/public/products.php', {
+                params: {
+                    page,
+                    limit: 8,
+                    search,
+                    category_id: categoryFilter
+                }
+            });
+            setProducts(response.data.products);
+            setTotalPages(response.data.pagination.total_pages);
+        } catch (error) {
+            console.error("Failed to load products:", error);
+        } finally {
+            setLoadingProducts(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchProducts();
+    }, [page, categoryFilter]);
+
+    const handleSearchSubmit = (e) => {
+        e.preventDefault();
+        setPage(1);
+        fetchProducts();
+    };
+
+    const openModal = (product) => {
+        // Adapt schema keys for details modal compatibility
+        const adaptedProduct = {
+            ...product,
+            subtitle: product.category_name || 'Cleaning Liquid',
+            // convert images array/string
+            image: getMediaUrl(JSON.parse(product.images || '[]')[0]),
+            features: [
+                'Formulated for deep cleaning',
+                'Strong on stains, safe on skin',
+                'Pleasant after-wash fragrance'
+            ],
+            instructions: [
+                'Apply liquid onto surfaces',
+                'Scrub gently with scrubber',
+                'Rinse thoroughly with clean water'
+            ]
+        };
+        setSelectedProduct(adaptedProduct);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
+
+    // Calculate dynamic API media server base URL
+    const getMediaUrl = (imgPath) => {
+        if (!imgPath) return '';
+        const serverRoot = API_BASE_URL.replace('/backend/api', '');
+        return `${serverRoot}/${imgPath}`;
+    };
+
+    // Hero helper
+    const hasHero = heroData && heroData.is_enabled === 1;
 
     return (
         <div className="overflow-hidden">
-            {/* Hero Section */}
-            <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900">
-                {/* Animated Gradient Background */}
-                <div className="absolute inset-0 gradient-bg-animated opacity-60" />
+            {/* Dynamic Hero Section */}
+            {hasHero ? (
+                <section 
+                    className="relative min-h-screen flex items-center justify-center overflow-hidden bg-slate-900"
+                    style={{
+                        backgroundImage: heroData.background_image ? `linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.75)), url(${getMediaUrl(heroData.background_image)})` : 'none',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center'
+                    }}
+                >
+                    {!heroData.background_image && (
+                        <div className="absolute inset-0 gradient-bg-animated opacity-60" />
+                    )}
 
-                {/* Decorative Elements */}
-                <div className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse-slow" />
-                <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl animate-pulse-slow" />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-secondary-500/10 rounded-full blur-3xl" />
+                    {/* Decorative Elements */}
+                    <div className="absolute top-20 left-10 w-72 h-72 bg-white/10 rounded-full blur-3xl animate-pulse-slow" />
+                    <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent-500/20 rounded-full blur-3xl animate-pulse-slow" />
 
-                <div className="relative container-custom py-12 z-10">
-
-
-                    <div className="text-center mb-12">
+                    <div className="relative container-custom py-12 z-10 text-center">
                         <motion.div
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.8 }}
+                            className="max-w-4xl mx-auto"
                         >
-                            <h1 className="text-4xl md:text-6xl font-black text-white mb-4 uppercase tracking-wide drop-shadow-2xl">
-                                SUPER SALE <span className="text-yellow-400">DHAMAKA OFFER</span>
+                            <h1 className="text-4xl md:text-6xl font-black text-white mb-6 uppercase tracking-wide drop-shadow-2xl leading-tight">
+                                {heroData.heading}
                             </h1>
-                            <p className="text-xl md:text-2xl font-bold text-yellow-200 mb-4 uppercase tracking-widest drop-shadow-lg">
-                                Ashadam and Bonalu Festival Offer
+                            <p className="text-xl md:text-2xl font-bold text-yellow-200 mb-8 max-w-2xl mx-auto drop-shadow-lg leading-relaxed">
+                                {heroData.description}
                             </p>
-                            <div className="flex flex-wrap items-center justify-center gap-4 text-base md:text-lg text-white font-medium bg-white/10 inline-flex px-6 py-2 rounded-full backdrop-blur-sm border border-white/20 shadow-lg mb-6">
-                                <span className="flex items-center gap-2">⏳ Duration: <span className="font-bold text-yellow-400">2 MONTHS</span></span>
-                                <span className="hidden md:inline">|</span>
-                                <span className="flex items-center gap-2">📅 Dates: <span className="font-bold">09/06/2026 - 09/08/2026</span></span>
-                            </div>
 
-                            {/* Delivery Badges */}
-                            <div className="flex flex-wrap justify-center gap-4 mt-2">
-                                <div className="bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-2 rounded-xl shadow-lg border border-red-400/30 flex items-center gap-2 transform hover:scale-105 transition-transform">
-                                    <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                                        <FaCheckCircle className="text-white" />
-                                    </div>
-                                    <div className="text-left">
-                                        <p className="text-[10px] uppercase font-bold opacity-80 leading-none">Hyderabad (30km)</p>
-                                        <p className="text-sm font-black">FREE DELIVERY</p>
-                                    </div>
-                                </div>
-                                <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-2 rounded-xl shadow-lg border border-blue-400/30 flex items-center gap-2 transform hover:scale-105 transition-transform">
-                                    <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                                        <FaCheckCircle className="text-white" />
-                                    </div>
-                                    <div className="text-left">
-                                        <p className="text-[10px] uppercase font-bold opacity-80 leading-none">Telangana & AP</p>
-                                        <p className="text-sm font-black">FREE DELIVERY</p>
-                                    </div>
-                                </div>
+                            {/* Buttons */}
+                            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                                {heroData.primary_cta_text && (
+                                    <a 
+                                        href={heroData.primary_cta_link || '#'} 
+                                        className="btn-primary px-10 py-4 text-xl shadow-[0_0_20px_rgba(255,105,180,0.4)] animate-pulse rounded-full font-bold inline-flex items-center gap-2"
+                                    >
+                                        <FaPhone /> {heroData.primary_cta_text}
+                                    </a>
+                                )}
+                                {heroData.secondary_cta_text && (
+                                    <a
+                                        href={heroData.secondary_cta_link || '#'}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="px-10 py-4 rounded-full bg-white/10 border-2 border-white text-white font-bold hover:bg-white hover:text-black transition-all shadow-lg flex items-center gap-2 text-xl"
+                                    >
+                                        <FaWhatsapp className="text-2xl text-green-400" /> {heroData.secondary_cta_text}
+                                    </a>
+                                )}
                             </div>
                         </motion.div>
                     </div>
-
-                    <div className="flex justify-center max-w-3xl mx-auto">
-                        {/* Offer 1 - 4 Litres */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="bg-black/40 backdrop-blur-xl rounded-3xl p-8 border border-white/20 relative flex flex-col hover:border-yellow-400/50 transition-all duration-300 shadow-2xl group"
-                        >
-                            <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                            
-                            <div className="text-center mb-6 relative z-10">
-                                <h2 className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-600 drop-shadow-lg mb-2 filter drop-shadow-[0_0_10px_rgba(250,204,21,0.3)]">
-                                    Rs.1400
-                                </h2>
-                                <h3 className="text-2xl text-white font-bold tracking-wide">ki 8 litres</h3>
-                            </div>
-
-                            <div className="relative z-10 mb-6 group-hover:scale-105 transition-transform duration-500">
-                                <img src={eightLitresImg} alt="8 Litre Offer" className="w-full h-auto object-cover rounded-2xl shadow-2xl border-4 border-white/20" />
-                            </div>
-
-                            <div className="flex-grow flex flex-col justify-between relative z-10">
-                                <div className="space-y-4 mb-8">
-                                    <div className="flex items-start gap-4 bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors items-center">
-                                        <img src={redBottleImg} alt="Red Liquid" className="w-12 h-16 object-contain drop-shadow-lg rounded-md mix-blend-screen" />
-                                        <div>
-                                            <p className="text-white font-bold text-lg leading-tight">4 Red yah yah Sparkle</p>
-                                            <p className="text-gray-300 text-sm mt-1">(for Deep Clean)</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex items-start gap-4 bg-white/5 p-4 rounded-xl border border-white/10 hover:bg-white/10 transition-colors items-center">
-                                        <img src={blueBottleImg} alt="Blue Liquid" className="w-12 h-16 object-contain drop-shadow-lg rounded-md mix-blend-screen" />
-                                        <div>
-                                            <p className="text-white font-bold text-lg leading-tight">4 Blue yah yah Sparkle</p>
-                                            <p className="text-gray-300 text-sm mt-1">(for Stubborn Stains)</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="flex justify-between items-center px-4 pt-4 border-t border-white/10 mt-6">
-                                        <div className="flex items-center gap-2">
-                                            <div className="w-2 h-6 bg-red-500 rounded-sm"></div>
-                                            <span className="text-red-100 font-medium">Red liquid: <span className="text-yellow-400 font-bold">Rs.350</span></span>
-                                        </div>
-                                        <div className="flex items-center gap-2">
-                                            <div className="w-2 h-6 bg-blue-500 rounded-sm"></div>
-                                            <span className="text-blue-100 font-medium">Blue liquid: <span className="text-yellow-400 font-bold">Rs.250</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </motion.div>
-
-
+                </section>
+            ) : (
+                <section className="relative h-64 flex items-center justify-center bg-slate-900">
+                    <div className="absolute inset-0 gradient-bg-animated opacity-60" />
+                    <div className="relative text-center z-10">
+                        <h1 className="text-3xl md:text-5xl font-black text-white">YAHYAH SPARKLE</h1>
                     </div>
-
-                    {/* Call Action */}
-                    <motion.div 
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.6 }}
-                        className="mt-12 flex flex-col sm:flex-row gap-6 justify-center items-center"
-                    >
-                        <a href="tel:+917671842007" className="btn-primary px-10 py-4 text-xl shadow-[0_0_20px_rgba(255,105,180,0.4)] animate-pulse rounded-full font-bold">
-                            <FaPhone className="mr-3 inline-block" /> Call: 7671842007
-                        </a>
-                        <a
-                            href="https://wa.me/917671842007?text=Hi,%20I%20am%20interested%20in%20the%20Super%20Sale%20Dhamaka%20Offer.%20Please%20confirm%20my%20booking."
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-10 py-4 rounded-full bg-white/10 border-2 border-white text-white font-bold hover:bg-white hover:text-black transition-all shadow-lg flex items-center gap-2 text-xl"
-                        >
-                            <FaWhatsapp className="text-2xl text-green-400" /> WhatsApp Now
-                        </a>
-                    </motion.div>
-
-                    {/* Scroll Indicator */}
-                    <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
-                        <motion.div
-                            animate={{ y: [0, 10, 0] }}
-                            transition={{ repeat: Infinity, duration: 2 }}
-                            className="w-6 h-10 rounded-full border-2 border-white/50 flex items-start justify-center p-2"
-                        >
-                            <div className="w-1.5 h-3 bg-white/70 rounded-full" />
-                        </motion.div>
-                    </div>
-                </div>
-            </section>
+                </section>
+            )}
 
             {/* Products Section */}
-            <section className="section-padding bg-white">
+            <section className="section-padding bg-white" id="products">
                 <div className="container-custom">
                     <div className="text-center mb-12">
                         <span className="inline-block px-4 py-2 rounded-full bg-accent-100 text-accent-700 font-semibold text-sm mb-4">
@@ -223,73 +243,145 @@ const Home = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {products.map((product, index) => (
-                            <motion.div
-                                key={index}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: index * 0.15 }}
-                                className="group"
+                    {/* Search & Category Filter */}
+                    <div className="max-w-4xl mx-auto mb-10 flex flex-col md:flex-row gap-4 items-center justify-between bg-gray-50 p-4 rounded-3xl border border-gray-100">
+                        <form onSubmit={handleSearchSubmit} className="relative w-full md:w-96">
+                            <input
+                                type="text"
+                                placeholder="Search products..."
+                                value={search}
+                                onChange={(e) => setSearch(e.target.value)}
+                                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm"
+                            />
+                            <FaSearch className="absolute left-3.5 top-3.5 text-gray-400 h-4 w-4" />
+                            <button type="submit" className="hidden">Search</button>
+                        </form>
+
+                        <div className="flex items-center gap-2 w-full md:w-auto">
+                            <FaRegFolderOpen className="text-gray-400" />
+                            <select
+                                value={categoryFilter}
+                                onChange={(e) => { setCategoryFilter(e.target.value); setPage(1); }}
+                                className="w-full md:w-auto px-4 py-2.5 rounded-xl border border-gray-200 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm"
                             >
-                                <div className={`bg-gradient-to-br ${product.bgColor} rounded-3xl p-6 h-full hover:shadow-2xl transition-all duration-300 relative`}>
-                                    {/* Bumper Offer Badge */}
-                                    {product.isBumperOffer && (
-                                        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-red-600 via-green-600 to-red-600 text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg z-10 animate-bounce">
-                                            🎄 BUMPER OFFER 🎁
-                                        </div>
-                                    )}
-
-                                    {/* Best Value Badge */}
-                                    {product.isBestValue && !product.isBumperOffer && (
-                                        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-4 py-1 rounded-full text-xs font-bold shadow-lg z-10">
-                                            🔥 Best Value!
-                                        </div>
-                                    )}
-
-                                    {/* Product Image */}
-                                    <div className="relative mb-6 overflow-hidden rounded-2xl bg-white/50 h-64 flex items-center justify-center">
-                                        <img
-                                            src={product.image}
-                                            alt={product.name}
-                                            className="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300"
-                                        />
-                                    </div>
-
-                                    {/* Product Info */}
-                                    <div className="text-center">
-                                        <h3 className="text-lg font-bold text-gray-900 mb-2">{product.name}</h3>
-                                        <p className="text-gray-600 text-sm mb-4">{product.subtitle}</p>
-
-                                        {/* Price */}
-                                        <div className={`inline-block px-6 py-3 rounded-xl bg-gradient-to-r ${product.color} mb-4`}>
-                                            <span className="text-white text-2xl font-bold">{product.price}</span>
-                                            <span className="text-white/80 text-sm ml-2">/ {product.unit}</span>
-                                        </div>
-
-                                        {/* Buttons */}
-                                        <div className="space-y-3">
-                                            <button
-                                                onClick={() => openModal(product)}
-                                                className={`inline-flex items-center justify-center w-full px-6 py-3 border-2 border-current text-gray-700 font-bold rounded-full hover:bg-white/50 transition-all duration-300 transform hover:scale-105`}
-                                                style={{ color: product.color.includes('red') ? '#ef4444' : product.color.includes('blue') ? '#3b82f6' : product.color.includes('purple') ? '#a855f7' : '#16a34a' }}
-                                            >
-                                                View Details
-                                            </button>
-                                            <a
-                                                href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi! I want to order ${product.name} (${product.price} / ${product.unit}). Please confirm availability.`)}`}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className={`inline-flex items-center justify-center w-full px-6 py-3 bg-gradient-to-r ${product.color} text-white font-bold rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105`}
-                                            >
-                                                <FaShoppingCart className="mr-2" /> Order Now
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                                <option value="">All Categories</option>
+                                {categories.map(cat => (
+                                    <option key={cat.id} value={cat.id}>{cat.name}</option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
+
+                    {/* Dynamic Product Grid */}
+                    {loadingProducts ? (
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                            {[1, 2, 3, 4].map(i => (
+                                <div key={i} className="animate-pulse bg-slate-50 border border-gray-100 rounded-3xl p-6 space-y-4">
+                                    <div className="bg-gray-200 h-48 rounded-2xl"></div>
+                                    <div className="h-6 bg-gray-200 rounded-md w-3/4"></div>
+                                    <div className="h-4 bg-gray-200 rounded-md w-1/2"></div>
+                                    <div className="h-10 bg-gray-200 rounded-xl"></div>
+                                </div>
+                            ))}
+                        </div>
+                    ) : products.length === 0 ? (
+                        <div className="text-center py-16 max-w-md mx-auto bg-gray-50 rounded-3xl border border-gray-100 p-8">
+                            <h3 className="text-lg font-bold text-gray-900 mb-2">No Products Available</h3>
+                            <p className="text-gray-500 text-sm">Please check back later or reset search keywords.</p>
+                        </div>
+                    ) : (
+                        <div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                {products.map((product, index) => {
+                                    const imgs = JSON.parse(product.images || '[]');
+                                    const firstImg = imgs.length > 0 ? getMediaUrl(imgs[0]) : null;
+                                    const prodPrice = product.price ? `₹${parseFloat(product.price).toFixed(0)}` : '₹350';
+
+                                    return (
+                                        <motion.div
+                                            key={product.id}
+                                            initial={{ opacity: 0, y: 30 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            transition={{ delay: index * 0.1 }}
+                                            className="group"
+                                        >
+                                            <div className="bg-slate-50 hover:bg-gradient-to-br hover:from-blue-50 hover:to-white border border-gray-100 hover:border-blue-200 rounded-3xl p-6 h-full hover:shadow-xl transition-all duration-300 relative flex flex-col justify-between">
+                                                
+                                                {/* Product Image */}
+                                                <div className="relative mb-6 overflow-hidden rounded-2xl bg-white h-52 flex items-center justify-center border border-gray-100">
+                                                    {firstImg ? (
+                                                        <img
+                                                            src={firstImg}
+                                                            alt={product.name}
+                                                            className="max-h-full max-w-full object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
+                                                        />
+                                                    ) : (
+                                                        <span className="text-gray-400 text-sm font-semibold">No Image</span>
+                                                    )}
+                                                </div>
+
+                                                {/* Product Info */}
+                                                <div className="text-center flex-1 flex flex-col justify-between">
+                                                    <div>
+                                                        <span className="text-xs font-bold text-primary-600 uppercase tracking-wider">{product.category_name || 'Cleaning Liquid'}</span>
+                                                        <h3 className="text-lg font-bold text-gray-900 mb-2 mt-1 line-clamp-1">{product.name}</h3>
+                                                        <p className="text-gray-500 text-sm mb-4 line-clamp-2">{product.description}</p>
+                                                    </div>
+
+                                                    {/* Price */}
+                                                    <div className="mb-4">
+                                                        <span className="text-gray-900 text-2xl font-black">{prodPrice}</span>
+                                                        <span className="text-gray-500 text-sm ml-1">/ 1 Litre</span>
+                                                    </div>
+
+                                                    {/* Buttons */}
+                                                    <div className="space-y-3">
+                                                        <button
+                                                            onClick={() => openModal(product)}
+                                                            className="inline-flex items-center justify-center w-full px-6 py-2.5 border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-bold rounded-full transition-all duration-300 transform hover:scale-105 text-sm"
+                                                        >
+                                                            View Details
+                                                        </button>
+                                                        <a
+                                                            href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi! I want to order ${product.name} (${prodPrice} / 1L). Please confirm availability.`)}`}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="inline-flex items-center justify-center w-full px-6 py-2.5 bg-gradient-to-r from-primary-600 to-secondary-600 text-white font-bold rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105 text-sm"
+                                                        >
+                                                            <FaShoppingCart className="mr-2" /> Order Now
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    );
+                                })}
+                            </div>
+
+                            {/* Pagination */}
+                            {totalPages > 1 && (
+                                <div className="flex justify-center items-center gap-4 mt-12">
+                                    <button
+                                        disabled={page === 1}
+                                        onClick={() => setPage(prev => Math.max(1, prev - 1))}
+                                        className="px-4 py-2 border border-gray-200 rounded-xl disabled:opacity-50 text-sm font-semibold hover:bg-gray-100 transition-colors"
+                                    >
+                                        Previous
+                                    </button>
+                                    <span className="text-sm font-medium text-gray-700">
+                                        Page {page} of {totalPages}
+                                    </span>
+                                    <button
+                                        disabled={page === totalPages}
+                                        onClick={() => setPage(prev => Math.min(totalPages, prev + 1))}
+                                        className="px-4 py-2 border border-gray-200 rounded-xl disabled:opacity-50 text-sm font-semibold hover:bg-gray-100 transition-colors"
+                                    >
+                                        Next
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    )}
                 </div>
             </section>
 
@@ -308,7 +400,7 @@ const Home = () => {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {services.map((service, index) => (
                             <motion.div
                                 key={index}
@@ -382,30 +474,6 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* CTA Section */}
-            <section className="section-padding bg-white">
-                <div className="container-custom">
-                    <div className="bg-gradient-to-r from-primary-600 via-secondary-600 to-accent-500 rounded-3xl p-8 md:p-16 text-center relative overflow-hidden">
-                        <div className="absolute inset-0 bg-black/10" />
-                        <div className="relative">
-                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                                Ready to Experience the Sparkle?
-                            </h2>
-                            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
-                                Book your cleaning service today and transform your home into a spotless haven.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Link to="/contact" className="inline-flex items-center justify-center px-8 py-4 bg-white text-primary-700 font-bold rounded-full hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
-                                    Book Now
-                                </Link>
-                                <a href="tel:+917671842007" className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-primary-700 transition-all duration-300">
-                                    <FaPhone className="mr-2" /> Call Now
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
             {/* Product Details Modal */}
             <ProductDetailsModal
                 isOpen={isModalOpen}
