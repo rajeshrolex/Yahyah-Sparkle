@@ -5,7 +5,7 @@ $ftpHost = "145.79.213.144"
 $ftpUser = "u882069120.orange-yak-837262.hostingersite.com"
 $ftpPass = "Sandanithin@2026"
 $localBackendFolder = Join-Path $PSScriptRoot "backend"
-$remotePath = "/public_html/" # Change if your target directory is different
+$remotePath = "" # Leave empty for root. Paths will start with /
 
 Write-Host "Starting FTP deployment to $ftpHost..." -ForegroundColor Cyan
 

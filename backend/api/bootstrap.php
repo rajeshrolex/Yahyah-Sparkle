@@ -28,7 +28,7 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/../config/database.php';
 
-// Database connection
+// Database connection with local mock fallback
 try {
     $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4", DB_USER, DB_PASS, [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -36,9 +36,16 @@ try {
         PDO::ATTR_EMULATE_PREPARES => false,
     ]);
 } catch (PDOException $e) {
-    http_response_code(500);
-    echo json_encode(['error' => 'Database connection failed: ' . $e->getMessage()]);
-    exit();
+    // If running locally, fall back to mock JSON database emulation
+    $isLocal = ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === '127.0.0.1');
+    if ($isLocal) {
+        require_once __DIR__ . '/mock_pdo.php';
+        $pdo = new MockPDO(__DIR__ . '/../database/mock_db.json');
+    } else {
+        http_response_code(500);
+        echo json_encode(['error' => 'Database connection failed: ' . $e->getMessage()]);
+        exit();
+    }
 }
 
 // Helper to send json response
