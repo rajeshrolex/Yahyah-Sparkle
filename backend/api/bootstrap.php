@@ -28,20 +28,26 @@ error_reporting(E_ALL);
 
 require_once __DIR__ . '/../config/database.php';
 
-// Database connection with local mock fallback
-try {
-    $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4", DB_USER, DB_PASS, [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES => false,
-    ]);
-} catch (PDOException $e) {
-    // If running locally, fall back to mock JSON database emulation
-    $isLocal = ($_SERVER['SERVER_NAME'] === 'localhost' || $_SERVER['SERVER_NAME'] === '127.0.0.1');
-    if ($isLocal) {
-        require_once __DIR__ . '/mock_pdo.php';
-        $pdo = new MockPDO(__DIR__ . '/../database/mock_db.json');
-    } else {
+// Detect local host to bypass real DB connection
+$isLocal = isset($_SERVER['HTTP_HOST']) && (
+    strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || 
+    strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false ||
+    strpos($_SERVER['HTTP_HOST'], '[::1]') !== false
+);
+
+if ($isLocal) {
+    // Direct mock database loader for local developer preview
+    require_once __DIR__ . '/mock_pdo.php';
+    $pdo = new MockPDO(__DIR__ . '/../database/mock_db.json');
+} else {
+    // Real MySQL connection for production environment
+    try {
+        $pdo = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8mb4", DB_USER, DB_PASS, [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES => false,
+        ]);
+    } catch (PDOException $e) {
         http_response_code(500);
         echo json_encode(['error' => 'Database connection failed: ' . $e->getMessage()]);
         exit();
