@@ -1,9 +1,12 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+  
+  # Stop rewriting if requesting the backend API folder
+  RewriteRule ^backend/ - [L]
+  RewriteRule ^uploads/ - [L]
+  
   RewriteRule ^index\.html$ - [L]
-  # Exclude backend directory from rewrites
-  RewriteCond %{REQUEST_URI} !^/backend
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-l
