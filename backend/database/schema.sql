@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS hero (
 
 -- Seed default admin user (password is bcrypt hashed for "Sandanithin@2026")
 INSERT INTO users (username, password, role) 
-VALUES ('admin', '$2y$10$pT6D42u9M4B9cE1u4xMhI.f54rLg3Q98iR6aDqVd3p2J6EwY9Xl9e', 'admin')
+VALUES ('admin', '$2y$10$X7vfGwTtvuR8zFzB8tFyaeWHqjyEOQgxA4AOVF1FWotTfICcpgDAi', 'admin')
 ON DUPLICATE KEY UPDATE username=username;
 
 -- Seed default hero content
