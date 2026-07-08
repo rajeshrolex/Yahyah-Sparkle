@@ -1,68 +1,68 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "username": "admin",
-            "password": "$2y$10$X7vfGwTtvuR8zFzB8tFyaeWHqjyEOQgxA4AOVF1FWotTfICcpgDAi",
-            "role": "admin",
-            "created_at": "2026-07-09T00:00:00Z"
-        }
-    ],
-    "categories": [
-        {
-            "id": 1,
-            "name": "Cleaning Liquids",
-            "description": "Premium quality floor, toilet, and tile cleaners."
-        },
-        {
-            "id": 2,
-            "name": "Combo Packs",
-            "description": "Multi-bottle deals and festival offers."
-        }
-    ],
-    "products": [
-        {
-            "id": 1,
-            "name": "Super Sale Dhamaka Offer (8 Litres)",
-            "description": "Ashadam and Bonalu Festival Offer. Get 8 Litres (4 Red + 4 Blue) of YahYah Sparkle cleaning liquids for just Rs. 1400!",
-            "price": 1400,
-            "category_id": 2,
-            "images": "[\"dist\/assets\/eight -BOZc_lYr.png\"]",
-            "is_active": 1,
-            "created_at": "2026-07-09T00:00:00Z"
-        },
-        {
-            "id": 2,
-            "name": "YahYah Sparkle Red",
-            "description": "Advanced Red Multi Cleaner for deep clean. Specially formulated for white marble, tiles, toilets, and removing hard cement marks.",
-            "price": 350,
-            "category_id": 1,
-            "images": "[\"dist\/assets\/red-cleaner-0Hd2HtN1.jpg\"]",
-            "is_active": 1,
-            "created_at": "2026-07-09T00:00:00Z"
-        },
-        {
-            "id": 3,
-            "name": "Super Sale Dhamaka Offer (8 Litres)",
-            "description": "Ashadam and Bonalu Festival Offer. Get 8 Litres (4 Red + 4 Blue) of YahYah Sparkle cleaning liquids for just Rs. 1400!",
-            "price": 1400,
-            "category_id": 2,
-            "images": "[\"uploads\\\/prod_0ff68c22411b09cf_0.jpeg\"]",
-            "is_active": 1,
-            "created_at": "2026-07-08T19:19:04+00:00"
-        }
-    ],
-    "hero": [
-        {
-            "id": 1,
-            "background_image": "",
-            "heading": "SUPER SALE DHAMAKA OFFER",
-            "description": "Ashadam and Bonalu Festival Offer. Get 8 Litres (4 Red + 4 Blue) of YahYah Sparkle cleaning liquids for just Rs. 1400!",
-            "primary_cta_text": "Call: 7671842007",
-            "primary_cta_link": "tel:+917671842007",
-            "secondary_cta_text": "WhatsApp Now",
-            "secondary_cta_link": "https:\/\/wa.me\/917671842007?text=Hi,%20I%20am%20interested%20in%20the%20Super%20Sale%20Dhamaka%20Offer.%20Please%20confirm%2520my%2520booking.",
-            "is_enabled": 1
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "$2y$10$X7vfGwTtvuR8zFzB8tFyaeWHqjyEOQgxA4AOVF1FWotTfICcpgDAi",
+      "role": "admin",
+      "created_at": "2026-07-09T00:00:00Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Combo Offers",
+      "description": "Festival specials and package discounts"
+    },
+    {
+      "id": 2,
+      "name": "Cleaning Liquids",
+      "description": "Premium single-bottle cleaning liquids"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Super Sale Dhamaka Offer (8 Litres)",
+      "description": "Ashadam and Bonalu Festival Offer! Contains 4 Litres of Red and 4 Litres of Blue YahYah Sparkle liquids. Red liquid: Rs.350, Blue liquid: Rs.250.",
+      "price": 1400,
+      "category_id": 1,
+      "images": "[\"uploads/eight_litres.png\"]",
+      "is_active": 1,
+      "created_at": "2026-07-09T00:00:00Z"
+    },
+    {
+      "id": 2,
+      "name": "YahYah Sparkle Red",
+      "description": "Advanced Red Multi Cleaner for deep clean. Specially formulated for white marble, tiles, toilets, and removing hard cement marks.",
+      "price": 350,
+      "category_id": 2,
+      "images": "[\"uploads/red_cleaner.jpg\"]",
+      "is_active": 1,
+      "created_at": "2026-07-09T00:00:00Z"
+    },
+    {
+      "id": 3,
+      "name": "YahYah Sparkle Blue",
+      "description": "Advanced Blue Salt Cleaner for stubborn stains. Ideal for removing hard salt stains from bathroom tiles, buckets, and floors.",
+      "price": 250,
+      "category_id": 2,
+      "images": "[\"uploads/blue_cleaner.jpg\"]",
+      "is_active": 1,
+      "created_at": "2026-07-09T00:00:00Z"
+    }
+  ],
+  "hero": [
+    {
+      "id": 1,
+      "background_image": "",
+      "heading": "SUPER SALE DHAMAKA OFFER",
+      "description": "Ashadam and Bonalu Festival Offer. Get 8 Litres (4 Red + 4 Blue) of YahYah Sparkle cleaning liquids for just Rs. 1400!",
+      "primary_cta_text": "Call: 7671842007",
+      "primary_cta_link": "tel:+917671842007",
+      "secondary_cta_text": "WhatsApp Now",
+      "secondary_cta_link": "https://wa.me/917671842007?text=Hi,%20I%20am%20interested%20in%20the%20Super%20Sale%20Dhamaka%20Offer.%20Please%20confirm%2520my%2520booking.",
+      "is_enabled": 1
+    }
+  ]
 }

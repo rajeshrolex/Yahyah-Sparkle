@@ -1,4 +1,4 @@
--- Database Schema for Yahyah-Sparkle
+-- Database Schema for Yahyah-Sparkle with Initial Data
 
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -45,14 +45,55 @@ INSERT INTO users (username, password, role)
 VALUES ('admin', '$2y$10$X7vfGwTtvuR8zFzB8tFyaeWHqjyEOQgxA4AOVF1FWotTfICcpgDAi', 'admin')
 ON DUPLICATE KEY UPDATE username=username;
 
+-- Seed default categories
+INSERT INTO categories (id, name, description)
+VALUES 
+(1, 'Combo Offers', 'Festival specials and package discounts'),
+(2, 'Cleaning Liquids', 'Premium single-bottle cleaning liquids')
+ON DUPLICATE KEY UPDATE name=name;
+
+-- Seed default products
+INSERT INTO products (id, name, description, price, category_id, images, is_active)
+VALUES 
+(
+    1, 
+    'Super Sale Dhamaka Offer (8 Litres)', 
+    'Ashadam and Bonalu Festival Offer! Contains 4 Litres of Red and 4 Litres of Blue YahYah Sparkle liquids. Red liquid: Rs.350, Blue liquid: Rs.250.', 
+    1400.00, 
+    1, 
+    '["uploads/eight_litres.png"]', 
+    1
+),
+(
+    2, 
+    'YahYah Sparkle Red', 
+    'Advanced Red Multi Cleaner for deep clean. Specially formulated for white marble, tiles, toilets, and removing hard cement marks.', 
+    350.00, 
+    2, 
+    '["uploads/red_cleaner.jpg"]', 
+    1
+),
+(
+    3, 
+    'YahYah Sparkle Blue', 
+    'Advanced Blue Salt Cleaner for stubborn stains. Ideal for removing hard salt stains from bathroom tiles, buckets, and floors.', 
+    250.00, 
+    2, 
+    '["uploads/blue_cleaner.jpg"]', 
+    1
+)
+ON DUPLICATE KEY UPDATE name=name;
+
 -- Seed default hero content
-INSERT INTO hero (heading, description, primary_cta_text, primary_cta_link, secondary_cta_text, secondary_cta_link, is_enabled)
+INSERT INTO hero (id, heading, description, primary_cta_text, primary_cta_link, secondary_cta_text, secondary_cta_link, is_enabled, background_image)
 VALUES (
+    1,
     'SUPER SALE DHAMAKA OFFER',
     'Ashadam and Bonalu Festival Offer. Get 8 Litres (4 Red + 4 Blue) of YahYah Sparkle cleaning liquids for just Rs. 1400!',
     'Call: 7671842007',
     'tel:+917671842007',
     'WhatsApp Now',
     'https://wa.me/917671842007?text=Hi,%20I%20am%20interested%20in%20the%20Super%20Sale%20Dhamaka%20Offer.%20Please%20confirm%20my%20booking.',
-    1
+    1,
+    ''
 ) ON DUPLICATE KEY UPDATE heading=heading;

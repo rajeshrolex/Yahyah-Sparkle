@@ -70,4 +70,15 @@ foreach ($file in $files) {
     Upload-File -localFile $file.FullName -remoteFile $targetRemotePath
 }
 
+# Upload files in the uploads folder
+$localUploadsFolder = Join-Path $PSScriptRoot "uploads"
+if (Test-Path $localUploadsFolder) {
+    $uploadFiles = Get-ChildItem -Path $localUploadsFolder -Recurse -File
+    foreach ($file in $uploadFiles) {
+        $relativePath = $file.FullName.Replace($localUploadsFolder, "").Replace("\", "/")
+        $targetRemotePath = "$remotePath/uploads" + $relativePath
+        Upload-File -localFile $file.FullName -remoteFile $targetRemotePath
+    }
+}
+
 Write-Host "Deployment completed!" -ForegroundColor Green
